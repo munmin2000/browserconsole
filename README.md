@@ -1,3 +1,3 @@
 # wydapp-groovy-angularstrap
 
-Maven, Groovy and AngularStrap Template Application
+Maven, Java and AngularStrap Template Application
