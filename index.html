@@ -1,0 +1,57 @@
+<html lang="en" ng-app="app">
+<head>
+	<title>Browser Console</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/css/font-webrupee.css" rel="stylesheet">
+	<link href="assets/css/main.css" rel="stylesheet"/>
+
+	<script src="assets/js/underscore.string.min.js" type="text/javascript"></script>
+	<script src="assets/js/moment.min.js" type="text/javascript"></script>
+
+	<!-- 
+	<script src="assets/js/jquery.min-1.9.1.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	-->
+
+	<script src="assets/js/angular.min.js" type="text/javascript"></script>
+	<script src="assets/js/angular-resource.min.js" type="text/javascript"></script>
+	<script src="assets/js/angular-ui-utils.min.js" type="text/javascript"></script>
+	<script src="assets/js/angular-ui-states.min.js" type="text/javascript"></script>
+	<script src="assets/js/ui-bootstrap-tpls-0.3.0.min.js" type="text/javascript"></script>
+
+	<script src="assets/js/html5sql.js" type="application/javascript"></script>
+	<script src="assets/js/ztt-ydn.db-0.6.6.js" type="application/javascript"></script>
+	
+	<script src="main.js" type="application/javascript"></script>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+		    <a class="brand" href="#">Browser Console</a>
+		    <ul class="nav">
+		    	<li ng-class="{ active: $state.includes('home') }"><a href="#">Home</a></li>
+		    	<li ng-class="{ active: $state.includes('webSql') }"><a href="#/webSql">Web SQL</a></li>
+		      	<li ng-class="{ active: $state.includes('about') }"><a href="#/about">About</a></li>
+		    </ul>
+		    <p class="navbar-text pull-right" ui-view="hint"></p>
+		</div>
+	</div>
+</div>
+
+<div class="container" ui-view="viewA" style="margin-top:60px"></div>
+
+<div class="container">
+	<pre>
+		$state = {{$state.current.name}}
+		$stateParams = {{$stateParams}}
+	</pre>
+</div>
+
+</body>
+</html>
