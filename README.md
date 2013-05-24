@@ -1,3 +1,3 @@
-# wydapp-groovy-angularstrap
+# LocalStorageConsole
 
-Maven, Java and AngularStrap Template Application
+LocalStorageConsole is a GUI client for HTML5's WebSQLStorage and IndexedDB based on AungularJS.
