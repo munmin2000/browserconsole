@@ -1,3 +1,3 @@
-# LocalStorageConsole
+# BrowserConsole
 
-LocalStorageConsole is a GUI client for HTML5's WebSQLStorage and IndexedDB based on AungularJS.
+BrowserConsole is a GUI client for HTML5's WebSQLStorage and IndexedDB based on AungularJS.
