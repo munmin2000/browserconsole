@@ -26,6 +26,10 @@
 	<script src="assets/js/html5sql.js" type="application/javascript"></script>
 	<script src="assets/js/ztt-ydn.db-0.6.6.js" type="application/javascript"></script>
 	
+	<script src="filters.js" type="application/javascript"></script>
+	<script src="directives.js" type="application/javascript"></script>
+	<script src="services.js" type="application/javascript"></script>
+	<script src="controllers.js" type="application/javascript"></script>
 	<script src="main.js" type="application/javascript"></script>
 </head>
 <body>
@@ -35,7 +39,7 @@
 		<div class="container">
 		    <a class="brand" href="#">Browser Console</a>
 		    <ul class="nav">
-		    	<li ng-class="{ active: $state.includes('home') }"><a href="#">Home</a></li>
+		    	<li ng-class="{ active: $state.includes('home') }"><a href="#/home">Home</a></li>
 		    	<li ng-class="{ active: $state.includes('webSql') }"><a href="#/webSql">Web SQL</a></li>
 		      	<li ng-class="{ active: $state.includes('about') }"><a href="#/about">About</a></li>
 		    </ul>
@@ -44,7 +48,11 @@
 	</div>
 </div>
 
-<div class="container" ui-view="viewA" style="margin-top:60px"></div>
+<br/><br/>
+
+<div class="container" ui-view="viewA"></div>
+
+<br/><br/>
 
 <div class="container">
 	<pre>
