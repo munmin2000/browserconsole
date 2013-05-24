@@ -30,36 +30,47 @@
 	<script src="directives.js" type="application/javascript"></script>
 	<script src="services.js" type="application/javascript"></script>
 	<script src="controllers.js" type="application/javascript"></script>
+	<script src="routers.js" type="application/javascript"></script>
 	<script src="main.js" type="application/javascript"></script>
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-		    <a class="brand" href="#">Browser Console</a>
 		    <ul class="nav">
-		    	<li ng-class="{ active: $state.includes('home') }"><a href="#/home">Home</a></li>
-		    	<li ng-class="{ active: $state.includes('webSql') }"><a href="#/webSql">Web SQL</a></li>
-		      	<li ng-class="{ active: $state.includes('about') }"><a href="#/about">About</a></li>
+		    	<li class="">
+					<a class="brand" href="#"><strong>Browser Console</strong></a>
+				</li>
+		    	<li class="divider-vertical"></li>
+		    	<li ng-class="{ active: $state.includes('home') }">
+		    		<a href="#/home"><i class="icon-home icon-white"></i></a>
+		    	</li>
+		    	<li class="divider-vertical"></li>
+		    	<li ng-class="{ active: $state.includes('webSql') }">
+		    		<a href="#/webSql">Web SQL</a>
+		    	</li>
 		    </ul>
-		    <p class="navbar-text pull-right" ui-view="hint"></p>
+		    <ul class="nav pull-right">
+				<li class="divider-vertical"></li>
+				<li>
+					<li ng-class="{ active: $state.includes('about') }"><a href="#/about">About</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
 
-<br/><br/>
+<ng-include src="'alert.html'"></ng-include>
 
 <div class="container" ui-view="viewA"></div>
 
 <br/><br/>
 
-<div class="container">
-	<pre>
-		$state = {{$state.current.name}}
-		$stateParams = {{$stateParams}}
-	</pre>
-</div>
+<pre>
+	$state = {{$state.current.name}}
+	$stateParams = {{$stateParams}}
+</pre>
 
 </body>
 </html>

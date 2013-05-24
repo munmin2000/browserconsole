@@ -1,0 +1,7 @@
+<div class="container" ng-controller="alertController">
+	<alert ng-repeat="alert in alerts" type="alert.type"
+		close="close($index)">{{alert.msg}}</alert>
+	
+	<button class="btn btn-link pull-right" ng-show="alerts.length > 1"
+		ng-click="closeAll()">Clear All</button>
+</div>

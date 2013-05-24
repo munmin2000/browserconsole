@@ -1,5 +1,9 @@
 <p>
-	{{ 'Version : v%VERSION%.' | interpolate }}
+	<b>App Id</b> : {{appId}}<br/>
+	<b>App Version </b>{{ ': %VERSION%.' | interpolate }}<br/> 
 </p>
-
-<p>{{message}}</p>
+<div class="form-inline">
+	<label>Alert Message : <input type="text" class="input-xlarge" ng-model="alertMessage"></label>
+	&nbsp;&nbsp;
+	<button class='btn' ng-click="addAlert()">Add Alert</button>
+</div>
