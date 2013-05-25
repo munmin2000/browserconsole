@@ -26,6 +26,16 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider) {
 		}
 	});
 
+	stateProvider.state('indexedDb', {
+		url : '/indexedDb',
+		views : {
+			'viewA' : {
+				templateUrl : 'indexedDb.html',
+				controller : 'indexedDbController'
+			}
+		}
+	});
+
 	stateProvider.state('about', {
 		url : '/about',
 		views : {
