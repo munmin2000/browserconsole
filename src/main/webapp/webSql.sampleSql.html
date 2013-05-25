@@ -1,0 +1,57 @@
+<pre>
+-- create employee table
+create table employee ( 
+	id varchar(30) not null,
+	name varchar(50) not null,
+	manager_id  varchar(30),
+	salary number(10,2) not null,
+	constraint employee_pk0 primary key (id)
+);
+-- create unique index on employee table
+create unique index employee_ui0 on employee(id);
+
+-- insert records in to the employee table
+insert into employee (id, name, salary) values ('vteial', 'Eialarasu', 75000);
+
+insert into employee (id, name, manager_id, salary) values ('arun', 'Arun', 'vteial', 65000);
+insert into employee (id, name, manager_id, salary) values ('ramesh', 'Ramesh', 'vteial', 60000);
+
+insert into employee (id, name, manager_id, salary) values ('ganesh', 'Ganesh', 'arun', 50000);
+insert into employee (id, name, manager_id, salary) values ('murgan', 'Murgan', 'arun', 45000);
+insert into employee (id, name, manager_id, salary) values ('varun', 'Varun', 'arun', 40000);
+
+insert into employee (id, name, manager_id, salary) values ('hema', 'Hema', 'ramesh', 35000);
+insert into employee (id, name, manager_id, salary) values ('sita', 'Sita', 'ramesh', 25000);
+
+insert into employee (id, name, manager_id, salary) values ('valavan', 'Valavan', 'hema', 10000);
+
+-- find no. of records in the employee table
+select count(*) from employee;
+
+-- find all records of employee table and show it in descending order
+select * from employee order by salary desc;
+
+-- find all records of employee table by showing employee name and his manager name
+select  b.name as name, a.name as manager_name from employee a, employee b where b.manager_id == a.id;
+
+-- select 2nd highest salary 
+select max(salary) from employee where salary not in  ( select max(salary) from employee);
+
+select max(salary) from employee where salary <>  ( select max(salary) from employee);
+
+select max(salary) from employee where salary < (select max(salary) from employee);
+
+select salary from (select salary from employee order by salary desc limit 2) as e order by salary limit 1;
+
+-- find nth highest salary in the employee table
+select name, salary from employee as e n = (select count( x.salary) from (select distinct salary from employee) as x where e.salary >= x.salary);
+
+-- find all duplicate records i.e manger_id of employee table
+select manager_id, count(manager_id) as times from employee group by manager_id having times > 1;
+
+-- delete all records in employee table
+delete from employee;
+
+-- delete table employee
+drop table employee;
+</pre>
