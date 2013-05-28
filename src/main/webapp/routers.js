@@ -1,4 +1,10 @@
-var router = function($stateProvider, $routeProvider, $urlRouterProvider) {
+var router = function($stateProvider, $routeProvider, $urlRouterProvider,
+		$registryProvider) {
+
+	$registryProvider.defaults({
+		appId : 'browserConsole',
+		appVersion : 0.1
+	});
 
 	$urlRouterProvider.otherwise('/');
 
@@ -46,16 +52,16 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider) {
 		}
 	});
 
-	stateProvider.state('error', {
-		url : '/error',
+	stateProvider.state('test', {
+		url : '/test',
 		views : {
 			'viewA' : {
-				templateUrl : 'error.html',
-				controller : 'errorController'
+				templateUrl : 'test.html',
+				controller : 'testController'
 			}
 		}
 	});
 
 };
 var configs = [ '$stateProvider', '$routeProvider', '$urlRouterProvider',
-		router ];
+		'$registryProvider', router ];

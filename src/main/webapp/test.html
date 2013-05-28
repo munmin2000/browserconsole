@@ -1,0 +1,20 @@
+<div class="container">
+	 <h4>{{message}}!</h4>
+	 <div class="form-inline well well-small">
+	 	<label>Query : &nbsp;&nbsp;<input type="text" class="span11" ng-model="query" char-limit="50"></label>
+		<pre>Query : {{ query | charLimit : 25}}</pre>
+	 </div>
+	 <div class="span6">
+	     <input type="text" ng-model="error" /> <button class="btn" ng-click="alerts.addError(error)">Add error</button><br/>
+	     <input type="text" ng-model="warning" /> <button class="btn" ng-click="alerts.addWarning(warning)">Add warning</button><br/>
+	     <input type="text" ng-model="success" /> <button class="btn" ng-click="alerts.addSuccess(success)">Add success</button>
+     </div>
+</div>
+
+<!-- 
+<div class="form-inline">
+	<label>Alert Message : <input type="text" class="input-xlarge" ng-model="alertMessage"></label>
+	&nbsp;&nbsp;
+	<button class='btn' ng-click="addAlert()">Add Alert</button>
+</div>
+-->
