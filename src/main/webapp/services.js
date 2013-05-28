@@ -4,7 +4,7 @@ var appServices = angular.module('app.services', []);
 
 appServices.value('version', '0.1');
 
-appServices.factory('webSqlService', function($log, $registry) {
+appServices.factory('sqlService', function($log, $registry) {
 	try {
 		var dbName = $registry.get('appId') + 'Db', description = dbName
 				+ ' console database';
@@ -20,6 +20,39 @@ appServices.factory('webSqlService', function($log, $registry) {
 	}
 
 	return html5sql;
+});
+
+appServices.factory("sqlServiceHelper", function($log) {
+	var webSqlServiceHelper = {};
+
+	webSqlServiceHelper.toSqlListAndSkipSelects = function(sql) {
+		var sqls = [], tsql = '', tsqls = _.str.lines(sql);
+
+		if (tsqls.length > 1) {
+			for ( var i = 0; i < tsqls.length; i++) {
+				tsqls[i] = _.str.trim(tsqls[i]);
+				if (_.str.isBlank(tsqls[i]) || tsqls[i].charAt(0) === '-') {
+					continue;
+				}
+				if (_.str.endsWith(tsqls[i], ';')) {
+					tsql += tsqls[i];
+					tsql = tsql.toLowerCase();
+					if (!_.str.startsWith(tsql, 'select')) {
+						sqls.push(tsql);
+					}
+					tsql = '';
+				} else {
+					tsql += tsqls[i];
+				}
+			}
+		} else {
+			sqls = tsqls;
+		}
+
+		return sqls;
+	};
+
+	return webSqlServiceHelper;
 });
 
 /*

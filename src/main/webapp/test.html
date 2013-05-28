@@ -4,11 +4,23 @@
 	 	<label>Query : &nbsp;&nbsp;<input type="text" class="span11" ng-model="query" char-limit="50"></label>
 		<pre>Query : {{ query | charLimit : 25}}</pre>
 	 </div>
-	 <div class="span6">
-	     <input type="text" ng-model="error" /> <button class="btn" ng-click="alerts.addError(error)">Add error</button><br/>
-	     <input type="text" ng-model="warning" /> <button class="btn" ng-click="alerts.addWarning(warning)">Add warning</button><br/>
-	     <input type="text" ng-model="success" /> <button class="btn" ng-click="alerts.addSuccess(success)">Add success</button>
+	 <div class="form-inline">
+	 	 <label>Warning : <input type="text" class="input-xxlarge" ng-model="warning" /></label>
+	 	 &nbsp;&nbsp;
+	     <button class="btn btn-mini" ng-click="alerts.addWarning(warning)">Add warning</button>
+	     <br/><br/>
+	     <label>Error : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="input-xxlarge" ng-model="error" /></label>
+	     &nbsp;&nbsp;
+	     <button class="btn btn-mini" ng-click="alerts.addError(error)">Add error</button>
+	     <br/><br/>
+	     <label>Success : <input type="text" class="input-xxlarge" ng-model="success" /></label>
+	     &nbsp;&nbsp;
+	     <button class="btn btn-mini" ng-click="alerts.addSuccess(success)">Add success</button>
      </div>
+</div>
+
+<div class="container">
+	<b>Interpolate eg. </b>{{ ': %VERSION%.' | interpolate }}<br/> 
 </div>
 
 <!-- 
