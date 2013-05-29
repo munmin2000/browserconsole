@@ -11,7 +11,7 @@
       "http://vteial.github.io/browserconsole/src/main/webapp/index.html"
     ],
     "launch": {
-      "web_url": "http://vteial.github.io/browserconsole/src/main/webapp/index.html#/webSql"
+      "web_url": "http://vteial.github.io/browserconsole/src/main/webapp/index.html"
     }
   }
 }
