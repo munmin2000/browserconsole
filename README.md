@@ -1,3 +1,3 @@
 # BrowserConsole
 
-BrowserConsole is a GUI client for HTML5's WebSQLStorage and IndexedDB
+BrowserConsole is a GUI client for HTML5's WebSQLStorage
