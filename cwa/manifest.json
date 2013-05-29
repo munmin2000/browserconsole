@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Browser Console",
+  "description": "GUI client for HTML5's WebSQLStorage",
+  "version": "1.2",
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "app": {
+    "urls": [ "http://vteial.github.io/browserconsole/src/main/webapp/index.html" ],
+    "launch": {
+      "web_url": "http://vteial.github.io/browserconsole/src/main/webapp/index.html"
+    }
+  },
+  "permissions": [ "unlimitedStorage", "notifications" ]
+}
