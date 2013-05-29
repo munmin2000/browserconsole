@@ -1,4 +1,5 @@
 <pre>
+-- Step 1
 -- create employee table
 create table employee ( 
 	id varchar(30) not null,
@@ -7,9 +8,11 @@ create table employee (
 	salary number(10,2) not null,
 	constraint employee_pk0 primary key (id)
 );
+-- Step 2
 -- create unique index on employee table
 create unique index employee_ui0 on employee(id);
 
+-- Step 3
 -- insert records in to the employee table
 insert into employee (id, name, salary) values ('vteial', 'Eialarasu', 75000);
 
@@ -25,6 +28,7 @@ insert into employee (id, name, manager_id, salary) values ('sita', 'Sita', 'ram
 
 insert into employee (id, name, manager_id, salary) values ('valavan', 'Valavan', 'hema', 10000);
 
+-- Step 3
 -- find no. of records in the employee table
 select count(*) from employee;
 
@@ -49,9 +53,11 @@ select name, salary from employee as e n = (select count( x.salary) from (select
 -- find all duplicate records i.e manger_id of employee table
 select manager_id, count(manager_id) as times from employee group by manager_id having times > 1;
 
+-- Step 4
 -- delete all records in employee table
 delete from employee;
 
+-- Step 5
 -- delete table employee
 drop table employee;
 </pre>

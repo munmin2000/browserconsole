@@ -20,7 +20,7 @@ appControllers.controller('alertController', function($scope, alertService) {
 });
 
 appControllers.controller('homeController', function($scope, $log, $registry) {
-	$scope.message = 'Welcome to Home!';
+	$scope.message = 'Welcome!';
 });
 
 appControllers.controller('webSqlController', function($scope, $log, $registry,
@@ -30,7 +30,6 @@ appControllers.controller('webSqlController', function($scope, $log, $registry,
 	$scope.recentQueries = [];
 	$scope.columns = [];
 	$scope.records = [];
-	$scope.queries = [];
 	$scope.message = '';
 	$scope.tabs = {
 		result : false,
@@ -38,80 +37,87 @@ appControllers.controller('webSqlController', function($scope, $log, $registry,
 		help : false
 	};
 	$scope.run = run;
+	$scope.runByQuery = runByQuery;
+	$scope.copyToQueryEditor = copyToQueryEditor;
+	$scope.message = $registry.get('appId') + 'Db database initialized...';
 
 	var sqls = [];
 
 	function run() {
 		$scope.query = $scope.query.toLowerCase();
-		sqls = sqlServiceHelper.toSqlListAndSkipSelects($scope.query);
+		runByQuery($scope.query);
+	}
+
+	function runByQuery(query) {
+		sqls = sqlServiceHelper.toSqlListAndSkipSelects(query);
 		if (sqls.length == 0) {
 			var message = "Nothing to process or multiple select";
-			message += " statements can't processed";
+			message += " statements can't processed...";
 			$scope.message = message;
 			$scope.tabs.console = true;
 			return;
 		}
-		if ($scope.query.match(/^select.*/)) {
+		if (sqls.length == 1 && sqls[0].match(/^select.*/)) {
 			sqlService.process(sqls, onSuccessSelect, onFailure);
 		} else {
 			sqlService.process(sqls, onSuccess, onFailure);
 		}
 	}
 
+	function copyToQueryEditor(query) {
+		$scope.query = query;
+	}
+
 	function onSuccessSelect(transaction, results, records) {
-		$scope.queries.push($scope.query);
-		var message = 'Success : ' + sqls.join('\n') + "\n";
 		if (records.length > 0) {
 			var columns = [];
 			for ( var prop in records[0]) {
 				columns.push(prop);
 			}
-			// $log.info(columns);
 			$scope.columns = columns;
 			$scope.records = records;
 		}
-		$scope.message = message;
 
-		// $scope.recentQueries.unshift(sqls);
+		var message = 'Success : ';
+		for ( var i = 0; i < sqls.length; i++) {
+			var index = $scope.recentQueries.indexOf(sqls[i].sql);
+			if (index != -1) {
+				$scope.recentQueries.splice(index, 1);
+			}
+			$scope.recentQueries.unshift(sqls[i].sql);
+			message += '\n' + sqls[i].sql;
+		}
+		$scope.message = message;
 
 		$scope.tabs.result = true;
 		$scope.$apply();
-		// $log.info($scope.message);
 	}
 
 	function onSuccess() {
-		$scope.queries.push($scope.query);
-		var message = 'Success : ' + $scope.query;
-		$scope.message = message;
-
-		var index = $scope.recentQueries.indexOf($scope.query);
-		if (index != -1) {
-			$scope.recentQueries.splice(index, 1);
+		var message = 'Success : ';
+		for ( var i = 0; i < sqls.length; i++) {
+			var index = $scope.recentQueries.indexOf(sqls[i].sql);
+			if (index != -1) {
+				$scope.recentQueries.splice(index, 1);
+			}
+			$scope.recentQueries.unshift(sqls[i].sql);
+			message += '\n' + sqls[i].sql;
 		}
-
-		// $scope.recentQueries.unshift(sqls);
+		$scope.message = message;
 
 		$scope.tabs.console = true;
 		$scope.$apply();
-		// $log.info($scope.message);
 	}
 
 	function onFailure(error, statement) {
-		var message = 'Error : ' + error.message + " when processing "
-				+ statement;
+		var message = 'Error : ' + error.message;
+		message += " when processing " + statement;
 		$scope.message = message;
+
 		$scope.tabs.console = true;
 		$scope.$apply();
-		// $log.warn(message);
 	}
 
-});
-
-appControllers.controller('indexedDbController', function($scope, $log,
-		$registry, alertService) {
-	$scope.alerts = alertService;
-
-	$scope.message = 'Welcome to IndexedDb!';
 });
 
 appControllers.controller('aboutController', function($scope, $log, $registry) {
@@ -128,12 +134,3 @@ appControllers.controller('testController', function($scope, $log, $registry,
 	$scope.warning = 'An warning occurred';
 	$scope.success = 'Ok';
 });
-
-/*
- * var http = $http.get('appContext.json'); http.success(function(response,
- * status, headers, config) { $log.info('success...'); $scope.data = response;
- * appContext = angular.copy(response); $log.info(appContext); $log.info('Status = ' +
- * status); }); http.error(function(response, status, headers, config) {
- * $log.info('error...'); $log.error(response); $log.info('Status = ' + status);
- * });
- */

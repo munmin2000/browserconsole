@@ -3,13 +3,16 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider,
 
 	$registryProvider.defaults({
 		appId : 'browserConsole',
-		appVersion : 0.1
+		appVersion : '1.0'
 	});
 
 	$urlRouterProvider.otherwise('/');
 
 	$routeProvider.when('/', {
-		redirectTo : '/home'
+		redirectTo : '/webSql'
+	});
+	$routeProvider.when('/home', {
+		redirectTo : '/webSql'
 	});
 
 	var stateProvider = $stateProvider.state('home', {
@@ -28,16 +31,6 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider,
 			'viewA' : {
 				templateUrl : 'webSql.html',
 				controller : 'webSqlController'
-			}
-		}
-	});
-
-	stateProvider.state('indexedDb', {
-		url : '/indexedDb',
-		views : {
-			'viewA' : {
-				templateUrl : 'indexedDb.html',
-				controller : 'indexedDbController'
 			}
 		}
 	});
