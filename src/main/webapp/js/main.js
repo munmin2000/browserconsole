@@ -2,7 +2,6 @@ var dependents = [ 'ui.utils', 'ui.compat', 'ui.bootstrap' ];
 
 // dependents.push('');
 
-dependents.push('johannestroeger.registry');
 // dependents.push('angular-underscore');
 // dependents.push('angular-underscore/utils');
 // dependents.push('angular-underscore/filters');

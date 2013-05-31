@@ -19,12 +19,25 @@ appControllers.controller('alertController', function($scope, alertService) {
 
 });
 
-appControllers.controller('homeController', function($scope, $log, $registry) {
-	$scope.message = 'Welcome!';
+appControllers.controller('homeController', function($scope, $log) {
+	$log.info('localStorage   = ' + Modernizr.localstorage);
+	$log.info('sessionStorage = ' + Modernizr.sessionstorage);
+	$log.info('websqlStorage  = ' + Modernizr.websqldatabase);
+	$log.info('indexedDb      = ' + Modernizr.indexeddb);
+	if(Modernizr.websqldatabase) {
+		$scope.message = 'Get start now!';
+		$scope.btnState = 'btn-primary';
+		$scope.launchPath = '#webSql';
+	}
+	else {
+		$scope.message = 'Your browser doesn\'t have support to run this app...!';
+		$scope.btnState = 'btn-danger';
+		$scope.launchPath = '#home';
+	}
 });
 
-appControllers.controller('webSqlController', function($scope, $log, $registry,
-		alertService, sqlService, sqlServiceHelper) {
+appControllers.controller('webSqlController', function($scope, $log,
+		alertService, sqlService, sqlServiceHelper, appContext) {
 	$scope.alerts = alertService;
 
 	$scope.recentQueries = [];
@@ -39,7 +52,7 @@ appControllers.controller('webSqlController', function($scope, $log, $registry,
 	$scope.run = run;
 	$scope.runByQuery = runByQuery;
 	$scope.copyToQueryEditor = copyToQueryEditor;
-	$scope.message = $registry.get('appId') + 'Db database initialized...';
+	$scope.message = appContext.appId + 'Db database initialized...';
 
 	var sqls = [];
 
@@ -120,17 +133,12 @@ appControllers.controller('webSqlController', function($scope, $log, $registry,
 
 });
 
-appControllers.controller('aboutController', function($scope, $log, $registry) {
-	$scope.appId = $registry.get('appId');
-	$scope.appVersion = $registry.get('appVersion');
-});
+appControllers.controller('testController',
+		function($scope, $log, alertService) {
+			$scope.message = 'Test View';
 
-appControllers.controller('testController', function($scope, $log, $registry,
-		alertService) {
-	$scope.message = 'Test View';
-
-	$scope.alerts = alertService;
-	$scope.error = 'An error occurred';
-	$scope.warning = 'An warning occurred';
-	$scope.success = 'Ok';
-});
+			$scope.alerts = alertService;
+			$scope.error = 'An error occurred';
+			$scope.warning = 'An warning occurred';
+			$scope.success = 'Ok';
+		});

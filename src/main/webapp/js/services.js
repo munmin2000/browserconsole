@@ -2,11 +2,14 @@
 
 var appServices = angular.module('app.services', []);
 
-appServices.value('version', '0.1');
+appServices.value('appContext', {
+	appId : 'browserConsole',
+	appVersion : '0.1'
+});
 
-appServices.factory('sqlService', function($log, $registry) {
+appServices.factory('sqlService', function($log, appContext) {
 	try {
-		var dbName = $registry.get('appId') + 'Db', description = dbName
+		var dbName = appContext.appId + 'Db', description = dbName
 				+ ' console database';
 		html5sql.openDatabase(dbName, _.str.capitalize(description),
 				1 * 1024 * 1024);

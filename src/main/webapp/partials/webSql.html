@@ -11,17 +11,17 @@
 		<code>Info : </code>&nbsp;&nbsp;To get start, see the sample sql's tab. Run multiple queries with semicolon(<code>;</code>) as separator. Select queries are skipped in multiple query execution.  
 	</span>			
 	<br/><br/>
-	<textarea class="span12" rows="3" placeholder="select * from employee" ng-model="query"></textarea>
+	<textarea class="span12" rows="3" placeholder="select * from employee" data-ng-model="query"></textarea>
 </div>
 <div class="row-fluid">
 	<div class="span4 offset4">
-		<button class="btn btn-mini" disabled="true"><i class="icon-file"></i>&nbsp;&nbsp;Import&nbsp;</button>
+		<button class="btn btn-mini" data-ng-disabled="true"><i class="icon-file"></i>&nbsp;&nbsp;Import&nbsp;</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-mini" disabled="true"><i class="icon-file"></i>&nbsp;&nbsp;Export</button>
+		<button class="btn btn-mini" data-ng-disabled="true"><i class="icon-file"></i>&nbsp;&nbsp;Export</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-mini" ng-click="query = ''"><i class="icon-remove"></i>&nbsp;&nbsp;Clear</button>
+		<button class="btn btn-mini" data-ng-click="query = ''"><i class="icon-remove"></i>&nbsp;&nbsp;Clear</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-mini btn-primary" ng-click="run()">
+		<button class="btn btn-mini btn-primary" data-ng-click="run()">
 			<i class="icon-play-circle"></i>&nbsp;&nbsp;Run&nbsp;&nbsp;
 		</button>
 	</div>
@@ -47,9 +47,9 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="record in records">
+		<tr data-ng-repeat="record in records">
 			<td>{{$index + 1}}</td>
-			<td ng-repeat="column in columns">{{record[column]}}</td>
+			<td data-ng-repeat="column in columns">{{record[column]}}</td>
 		</tr>
 		</tbody>
 		</table>
@@ -73,12 +73,12 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="recentQuery in recentQueries">
+		<tr data-ng-repeat="recentQuery in recentQueries">
 			<td>{{$index + 1}}</td>
 			<td>{{recentQuery}}</td>
 			<td width="130">
-				<button class="btn btn-link" ng-click="copyToQueryEditor(recentQuery)">Select</button>
-				<button class="btn btn-link" ng-click="runByQuery(recentQuery)">Run</button>
+				<button class="btn btn-link" data-ng-click="copyToQueryEditor(recentQuery)">Select</button>
+				<button class="btn btn-link" data-ng-click="runByQuery(recentQuery)">Run</button>
 			</td>
 		</tr>
 		</tbody>
@@ -88,7 +88,7 @@
 	
 	<pane heading="Sample Sql's" active="tabs.help">
 	<div>
-		<ng-include src="'webSql.sampleSql.html'"></ng-include>
+		<ng-include src="'partials/sampleSqls.html'"></ng-include>
 	</div>
 	</pane>
 	

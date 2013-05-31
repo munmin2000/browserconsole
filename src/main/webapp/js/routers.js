@@ -1,17 +1,8 @@
-var router = function($stateProvider, $routeProvider, $urlRouterProvider,
-		$registryProvider) {
-
-	$registryProvider.defaults({
-		appId : 'browserConsole',
-		appVersion : '1.0'
-	});
+var router = function($stateProvider, $routeProvider, $urlRouterProvider) {
 
 	$urlRouterProvider.otherwise('/');
 
 	$routeProvider.when('/', {
-		redirectTo : '/webSql'
-	});
-	$routeProvider.when('/home', {
 		redirectTo : '/webSql'
 	});
 
@@ -19,7 +10,7 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider,
 		url : '/home',
 		views : {
 			'viewA' : {
-				templateUrl : 'home.html',
+				templateUrl : 'partials/home.html',
 				controller : 'homeController'
 			}
 		}
@@ -29,18 +20,8 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider,
 		url : '/webSql',
 		views : {
 			'viewA' : {
-				templateUrl : 'webSql.html',
+				templateUrl : 'partials/webSql.html',
 				controller : 'webSqlController'
-			}
-		}
-	});
-
-	stateProvider.state('about', {
-		url : '/about',
-		views : {
-			'viewA' : {
-				templateUrl : 'about.html',
-				controller : 'aboutController'
 			}
 		}
 	});
@@ -49,7 +30,7 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider,
 		url : '/test',
 		views : {
 			'viewA' : {
-				templateUrl : 'test.html',
+				templateUrl : 'partials/test.html',
 				controller : 'testController'
 			}
 		}
@@ -57,4 +38,4 @@ var router = function($stateProvider, $routeProvider, $urlRouterProvider,
 
 };
 var configs = [ '$stateProvider', '$routeProvider', '$urlRouterProvider',
-		'$registryProvider', router ];
+		router ];

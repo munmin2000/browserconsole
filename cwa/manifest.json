@@ -7,9 +7,9 @@
     "128": "icon_128.png"
   },
   "app": {
-    "urls": [ "http://vteial.github.io/browserconsole/src/main/webapp/index.html" ],
+    "urls": [ "http://vteial.github.io/browserconsole/" ],
     "launch": {
-      "web_url": "http://vteial.github.io/browserconsole/src/main/webapp/index.html"
+      "web_url": "http://vteial.github.io/browserconsole/index.html"
     }
   },
   "permissions": [ "unlimitedStorage", "notifications" ]
