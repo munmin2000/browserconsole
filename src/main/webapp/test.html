@@ -1,4 +1,28 @@
-<pre class="prettyprint linenums">
+<html lang="en">
+<head>
+	<title>Browser Console</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GUI client for WebSQL">
+    <meta name="author" content="Eialarasu">
+	
+	<link href="assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/css/font-webrupee.css" rel="stylesheet">
+	<link href="assets/css/prettify.css" rel="stylesheet" />
+	
+	<link href="css/main.css" rel="stylesheet"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body onload="prettyPrint()">
+
+<br/><br/>
+<div class="container">
+<pre class="prettyprint lang-sql">
 -- Step 1
 -- create employee table
 create table employee ( 
@@ -61,3 +85,26 @@ delete from employee;
 -- delete table employee
 drop table employee;
 </pre>
+</div>
+
+<br/><br/>
+
+<!-- 
+<pre>
+	$state = {{$state.current.name}}
+	$stateParams = {{$stateParams}}
+</pre>
+-->
+
+<script src="assets/lib/modernizr.min.js" type="text/javascript"></script>
+<script src="assets/lib/moment.min.js" type="text/javascript"></script>
+<script src="assets/lib/underscore-min.js" type="text/javascript"></script>
+<script src="assets/lib/underscore.string.min.js" type="text/javascript"></script>
+<script src="assets/lib/prettify/prettify.js" type="text/javascript"></script>
+<!-- 
+<script src="assets//lib/jquery.min-1.9.1.js" type="application/javascript"></script>
+<script src="assets//lib/bootstrap.min.js" type="application/javascript"></script>
+-->
+
+</body>
+</html>
