@@ -52,7 +52,7 @@ appControllers.controller('webSqlController', function($scope, $log,
 	$scope.run = run;
 	$scope.runByQuery = runByQuery;
 	$scope.copyToQueryEditor = copyToQueryEditor;
-	$scope.message = appContext.appId + 'Db database initialized...';
+	$scope.message = appContext.appId + 'Db initialized...';
 
 	var sqls = [];
 

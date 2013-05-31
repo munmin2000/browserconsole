@@ -16,7 +16,7 @@ appServices.factory('sqlService', function($log, appContext) {
 		html5sql.logInfo = true;
 		html5sql.logErrors = true;
 		html5sql.putSelectResultsInArray = true;
-		$log.info(_.str.camelize(dbName) + ' database initialized...');
+		$log.info(_.str.camelize(dbName) + ' initialized...');
 	} catch (error) {
 		$log.error('Unable to initialize local database [' + error.message
 				+ ']');
